@@ -1,5 +1,174 @@
 body{
     box-sizing:border-box;
     background: linear-gradient(to right bottom, #3036c2, #4f34c8, #6830cd, #7f29d2, #951fd5);
-    height:100vh;
 }
+
+
+// SEARCH BAR
+.search__bar{
+    margin:0 auto;
+    .search__bar__wrapper{
+        text-align: center;
+        max-width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+
+        .search__bar__wrapper--header{
+            color: #ffeb3b;
+            font-family: 'Shadows Into Light', cursive;
+                &:hover{
+                    -webkit-animation: neon 1.5s ease-in-out infinite alternate;
+                    -moz-animation: neon 1.5s ease-in-out infinite alternate;
+                    animation: neon 1.5s ease-in-out infinite alternate;  
+            } 
+        }
+        .search__bar__form{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .search__bar__form--container{
+                display:flex;
+                .search__bar__form--icon {
+                    color:#fff;;
+                    border-bottom: 3px solid #000;
+                }
+                .search__bar__form--input{
+                    border:none;
+                    outline:0;
+                    background:transparent;
+                    -webkit-appearance: none;
+                    border-bottom:3px solid #000;
+                    font-family: 'Pontano Sans', sans-serif;
+                    color:#fff;
+                    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                    color:#fff;
+                    }
+                    &::-moz-placeholder { /* Mozilla */
+                        font-size:2rem;
+                    }
+                }
+            }
+        }
+        .search__bar__form--button{
+            border:0;
+            background:#E55142;
+            text-transform:uppercase;
+            font-family: 'Montserrat', sans-serif;
+            color:#fff;
+            box-shadow: 10px 10px 14px 1px rgba(0,0,0,0.2);
+            transition: all 0.5s;
+            &:hover{
+                box-shadow: none;
+            }
+        }
+    }
+}
+// ITEMS FROM DATABASE
+.container{
+    margin:0 auto;
+.album__list{
+    margin: 0 auto;
+    display:flex;
+    box-shadow: 1px 1px 20px #000;
+    .album__list__album--item{
+      width:100%;
+      display:flex;
+      background:#fff;
+      .album__list__album--thumbnail{
+          width:50%;
+          height:100%;
+          img{
+              width:100%;
+              height:100%;
+          }
+      }
+      .album__list__album__details{
+          display: flex;
+          flex-direction: column;
+          width: 60%;
+          align-items:center;
+          .album__list__details--artist{
+              color:#666C74;
+              text-transform: uppercase;
+              font-family:'Montserrat';
+              font-weight:bold;
+              text-align:center;
+          }
+          .album__list__details--title{
+              color:#666C74;
+              text-transform: uppercase;
+              font-family:'Montserrat';
+              font-style: italic;
+              text-align:center;
+          }
+          .album__list__details--offer{
+              display:flex;
+              width: 90%;
+              align-items: flex-end;
+              justify-content: space-between;
+              .album__list__details--price{
+                  font-family: 'Montserrat';
+                  span{
+                      font-weight:bold;
+                  }
+              }
+              a{
+                span{
+                    display: block;
+                    border-radius:50%;
+                    background: orange;
+                    position:relative;
+                    text-align:center;
+                    transition:all 0.5s;
+                    .svg-inline--fa.fa-shopping-cart{
+                        color:#fff;
+                        position:absolute;   
+                        left:4px;
+                        top:5px;
+                    }
+                    &:hover {
+                        .svg-inline--fa.fa-shopping-cart{
+                            display:none;
+                        }
+                    &:hover::after{
+                        content: 'Buy Now !';
+                        color:#000;
+                        text-decoration:none;
+                        font-family:'Montserrat';
+                        text-transform:uppercase;
+                        position:absolute;
+                        line-height: 1.4;
+                        font-weight: 500;
+                        left:0;
+                        
+                        }
+                    }   
+                }
+             }
+          }
+      }
+    }
+}
+}
+
+
+// Animation on h1 hover
+@-webkit-keyframes neon {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffeb3b, 0 0 70px #ffeb3b 0 0 80px  #ffeb3b, 0 0 100px  #ffeb3b, 0 0 150px #ffeb3b;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px  #ffeb3b, 0 0 35px  #ffeb3b, 0 0 40px  #ffeb3b, 0 0 50px  #ffeb3b, 0 0 75px  #ffeb3b;
+    }
+  }
+  @keyframes neon {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffeb3b, 0 0 70px #ffeb3b 0 0 80px  #ffeb3b, 0 0 100px  #ffeb3b, 0 0 150px #ffeb3b;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px  #ffeb3b, 0 0 35px  #ffeb3b, 0 0 40px  #ffeb3b, 0 0 50px  #ffeb3b, 0 0 75px  #ffeb3b;
+    }
+  }

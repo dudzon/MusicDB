@@ -1,4 +1,104 @@
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991.98px){
-    
+@media (min-width: 768px) and (max-width: 991.98px) {
+    html {
+        font-size: $fontSizeMd;
+    } // SEARCH BAR
+    .search__bar {
+        width: $widthMd;
+        .search__bar__wrapper {
+            .search__bar__wrapper--header {
+                @include search__bar__wrapper--header;
+            }
+            .search__bar__form {
+                width: $widthMd;
+                height: $formHeight;
+                .search__bar__form--container {
+                    .search__bar__form--icon {
+                        @include search__bar__form--icon;
+                    }
+                    .search__bar__form--input {
+                        width: $widthMd - 8rem;
+                        @include search__bar__form--input;
+                        &::-webkit-input-placeholder {
+                            /* Chrome/Opera/Safari */
+                            font-size: $inputFontSize;
+                        }
+                        &::-moz-placeholder {
+                            /* Mozilla */
+                            font-size: $inputFontSize;
+                        }
+                    }
+                }
+            }
+            .search__bar__form--button {
+                @include search__bar__form--button;
+            }
+        }
+    }
+    // ITEMS FROM DATABASE
+    .container {
+        width: $widthMd;
+        @include container;
+        .album__list {
+            @include album__list;
+            width: 30%;
+            &.album__list:nth-child(1),
+            &.album__list:nth-child(2),
+            &.album__list:nth-child(3) {
+                margin-top: 3rem;
+            }
+            &.album__list:nth-last-child(1),
+            &.album__list:nth-last-child(2),
+            &.album__list:nth-last-child(3) {
+                margin-bottom: 3rem;
+            }
+            .album__list__album--item {
+                flex-direction: column;
+                .album__list__album--thumbnail {
+                    width: 65%;
+                    height: auto;
+                    img {
+                        margin-left: 25%;
+                    }
+                }
+                .album__list__album__details {
+                    width: auto;
+                    .album__list__details--artist {
+                        @include album__list__details--artist;
+                    }
+                    .album__list__details--title {
+                        font-size: $albumTitleFontSize;
+                    }
+                    .album__list__details--offer {
+                        height: $albumOfferHeight;
+                        .album__list__details--price {
+                            @include album__list__details--price;
+                            span {
+                                font-size: 1.2rem;
+                                margin-right: .5rem;
+                            }
+                        }
+                        a {
+                            span {
+                                width: 2.3rem;
+                                height: 2.3rem;
+                                margin-top: -3rem;
+                                .svg-inline--fa.fa-shopping-cart {
+                                    font-size: 1.4rem;
+                                }
+                                &:hover {
+                                    width: 3.5rem;
+                                    height: 3.5rem;
+                                    &:hover::after {
+                                        font-size: .8rem;
+                                        top: 8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

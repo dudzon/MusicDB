@@ -1,0 +1,49 @@
+// SEARCh BAR
+
+@mixin search__bar__wrapper--header{
+    font-size:3rem;
+    letter-spacing:.2rem; 
+}
+@mixin search__bar__form--icon{
+    font-size: 2.7rem;
+    padding-right: 10px;
+}
+@mixin search__bar__form--input{
+    height:3rem;
+    font-size:2rem;
+}
+@mixin search__bar__form--button{
+    width:22.72rem;
+    height:4.54rem;
+    margin-top: 2rem;
+    border-radius:4.54rem;
+    font-size:1.1rem;
+    letter-spacing: 0.125rem;
+}
+
+
+// ALBUMS
+@mixin container{
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin album__list{
+    margin: 0 auto;
+    margin-top:2rem;
+}
+@mixin album__list__details--artist{
+    font-size:1.2rem;
+    padding: 1rem;
+}
+@mixin album__list__details--artistLarge{
+    font-size:1rem;
+    padding: 1rem;
+}
+@mixin album__list__details--price{
+    font-size:1.2rem;
+    margin-bottom:1rem;
+}
+@mixin album__list__details--priceLarge{
+    font-size:1rem;
+    margin-bottom:1rem;
+}

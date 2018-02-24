@@ -1,228 +1,87 @@
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { 
-
-html{
-    font-size:$fontSizeXs;
-}
-
-// SEARCH BAR
-.search__bar{
-    width:$widthXs;
-    margin:0 auto;
-    .search__bar__wrapper{
-        text-align: center;
-        // margin: 5rem 0 0 0;
-        max-width:100%;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-
-        .search__bar__wrapper--header{
-            color: #ffeb3b;
-            font-family: 'Shadows Into Light', cursive;
-            font-size:3rem;
-            letter-spacing:.2rem;  
-                &:hover{
-                    -webkit-animation: neon 1.5s ease-in-out infinite alternate;
-                    -moz-animation: neon 1.5s ease-in-out infinite alternate;
-                    animation: neon 1.5s ease-in-out infinite alternate;  
-            } 
-        }
-        .search__bar__form{
-            display:flex;
-            flex-direction: column;
-            width:$widthXs;
-            height:10rem;
-            justify-content: center;
-            align-items: center;
-            .search__bar__form--container{
-                display:flex;
-                .search__bar__form--icon {
-                    font-size: 2.7rem;
-                    color:#fff;;
-                    border-bottom: 3px solid #000;
-                    padding-right: 10px;
-                }
-                .search__bar__form--input{
-                    width:$widthXs - 8rem;
-                    height:3rem;
-                    border:none;
-                    outline:0;
-                    background:transparent;
-                    -webkit-appearance: none;
-                    border-bottom:3px solid #000;
-                    font-size:2rem;
-                    font-family: 'Pontano Sans', sans-serif;
-                    color:#fff;
-                    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                    font-size:2rem;
-                    color:#fff;
+@media (max-width: 575.98px) {
+    html {
+        font-size: $fontSizeXs;
+    }
+    // SEARCH BAR
+    .search__bar {
+        width: $widthXs;
+        .search__bar__wrapper {
+            .search__bar__wrapper--header {
+                @include search__bar__wrapper--header;
+            }
+            .search__bar__form {
+                width: $widthXs;
+                height: $formHeight;
+                .search__bar__form--container {
+                    .search__bar__form--icon {
+                        @include search__bar__form--icon;
                     }
-                    &::-moz-placeholder { /* Mozilla */
-                        font-size:2rem;
-                        color:#fff;
-                        opacity:1;
+                    .search__bar__form--input {
+                        width: $widthXs - 8rem;
+                        @include search__bar__form--input;
+                        &::-webkit-input-placeholder {
+                            /* Chrome/Opera/Safari */
+                            font-size: $inputFontSize;
+                        }
+                        &::-moz-placeholder {
+                            /* Mozilla */
+                            font-size: $inputFontSize;
+                        }
+                    }
+                }
+            }
+            .search__bar__form--button {
+                @include search__bar__form--button;
+            }
+        }
+    }
+    // ITEMS FROM DATABASE
+    .container {
+        width: $widthXs;
+        .album__list {
+            margin: 0 auto;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            .album__list__album--item {
+                height: 15rem;
+                .album__list__album__details {
+                    .album__list__details--artist {
+                        @include album__list__details--artist;
+                    }
+                    .album__list__details--title {
+                        font-size: $albumTitleFontSize;
+                    }
+                    .album__list__details--offer {
+                        height: $albumOfferHeight;
+                        .album__list__details--price {
+                            @include album__list__details--price;
+                            span {
+                                font-size: 1.3rem;
+                                margin-right: .5rem;
+                            }
+                        }
+                        a {
+                            span {
+                                width: 2.5rem;
+                                height: 2.5rem;
+                                margin-top: -3rem;
+                                .svg-inline--fa.fa-shopping-cart {
+                                    font-size: 1.4rem;
+                                }
+                                &:hover {
+                                    width: 4rem;
+                                    height: 4rem;
+                                    &:hover::after {
+                                        font-size: .8rem;
+                                        top: 8px;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        .search__bar__form--button{
-            width:22.72rem;
-            height:4.54rem;
-            margin-top: 2rem;
-            border-radius:4.54rem;
-            border:0;
-            background:#E55142;
-            text-transform:uppercase;
-            font-family: 'Montserrat', sans-serif;
-            font-size:1.1rem;
-            color:#fff;
-            letter-spacing: 0.125rem;
-            box-shadow: 10px 10px 14px 1px rgba(0,0,0,0.2);
-            transition: all 0.5s;
-            &:hover{
-                box-shadow: none;
-            }
-        }
     }
-}
-// ITEMS FROM DATABASE
-
-.album__list{
-    width: $widthXs;
-    margin: 0 auto;
-    display:flex;
-    flex-direction: column;
-    margin-top:3rem;
-    box-shadow: 1px 1px 20px #000;
-    .album__list__album--item{
-      width:100%;
-      height:15rem;
-      display:flex;
-      background:#fff;
-      .album__list__album--thumbnail{
-          width:50%;
-          height:100%;
-          img{
-              width:100%;
-              height:100%;
-          }
-      }
-      .album__list__album__details{
-          display: flex;
-          flex-direction: column;
-          width: 60%;
-          align-items:center;
-          .album__list__details--artist{
-              color:#666C74;
-              text-transform: uppercase;
-              font-family:'Montserrat';
-              font-size:1.2rem;
-              font-weight:bold;
-              text-align:center;
-              padding: 1rem;
-          }
-          .album__list__details--title{
-              color:#666C74;
-              text-transform: uppercase;
-              font-family:'Montserrat';
-              font-size:1.2rem;
-              font-style: italic;
-              text-align:center;
-          }
-          .album__list__details--offer{
-              display:flex;
-              width: 90%;
-              height: 6rem;
-              align-items: flex-end;
-              justify-content: space-between;
-              .album__list__details--price{
-                  font-family: 'Montserrat';
-                  font-size:1.2rem;
-                  margin-bottom:1rem;
-                  span{
-                      font-weight:bold;
-                      font-size:1.3rem;
-                      margin-right:.5rem;
-                  }
-              }
-              a{
-                span{
-                    display: block;
-                    width:2.5rem;
-                    height:2.5rem;
-                    border-radius:50%;
-                    background: orange;
-                    position:relative;
-                    text-align:center;
-                    margin-top:-3rem;
-                    transition:all 0.5s;
-                    .svg-inline--fa.fa-shopping-cart{
-                        font-size:1.4rem;
-                        color:#fff;
-                        position:absolute;
-                        top:5px;
-                        left:4px;    
-                    }
-                    &:hover {
-                        width:4rem;
-                        height:4rem;
-                        .svg-inline--fa.fa-shopping-cart{
-                            display:none;
-                        }
-                    &:hover::after{
-                        content: 'Buy Now !';
-                        color:#fff;
-                        font-size:.8rem;
-                        text-decoration:none;
-                        font-family:'Montserrat';
-                        text-transform:uppercase;
-                        position:absolute;
-                        line-height: 1.4;
-                        font-weight: 500;
-                        top:8px;
-                        left:0;
-                        
-                        }
-                    }   
-                }
-             }
-          }
-      }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Animation on h1 hover
-@-webkit-keyframes neon {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffeb3b, 0 0 70px #ffeb3b 0 0 80px  #ffeb3b, 0 0 100px  #ffeb3b, 0 0 150px #ffeb3b;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px  #ffeb3b, 0 0 35px  #ffeb3b, 0 0 40px  #ffeb3b, 0 0 50px  #ffeb3b, 0 0 75px  #ffeb3b;
-    }
-  }
-  @keyframes neon {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffeb3b, 0 0 70px #ffeb3b 0 0 80px  #ffeb3b, 0 0 100px  #ffeb3b, 0 0 150px #ffeb3b;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px  #ffeb3b, 0 0 35px  #ffeb3b, 0 0 40px  #ffeb3b, 0 0 50px  #ffeb3b, 0 0 75px  #ffeb3b;
-    }
-  }
 }
