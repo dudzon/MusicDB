@@ -1,6 +1,12 @@
+html{
+    height:100%;
+}
+
 body{
     box-sizing:border-box;
     background: linear-gradient(to right bottom, #3036c2, #4f34c8, #6830cd, #7f29d2, #951fd5);
+    background-attachment: fixed;
+    height:100%;
 }
 
 
