@@ -47,11 +47,6 @@
             &.album__list:nth-child(3) {
                 margin-top: 3rem;
             }
-            &.album__list:nth-last-child(1),
-            &.album__list:nth-last-child(2),
-            &.album__list:nth-last-child(3) {
-                margin-bottom: 3rem;
-            }
             .album__list__album--item {
                 flex-direction: column;
                 .album__list__album--thumbnail {

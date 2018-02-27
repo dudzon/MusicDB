@@ -45,6 +45,11 @@
             margin-bottom: 2rem;
             .album__list__album--item {
                 height: 15rem;
+                .album__list__album--thumbnail{
+                    img{
+                        margin-top:0;
+                    }
+                }
                 .album__list__album__details {
                     .album__list__details--artist {
                         @include album__list__details--artist;

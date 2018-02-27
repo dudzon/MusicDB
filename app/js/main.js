@@ -3,11 +3,12 @@
 const searchBtn = document.body.querySelector('.search__bar__form--button');
 const artistQuery = document.body.querySelector('.search__bar__form--input');
 const container = document.body.querySelector('.container');
+const form = document.body.querySelector('#search_form');
+
 
 // Event Listeners
 searchBtn.addEventListener('click',getData,false); /* Show Data */
-
-
+form.addEventListener('submit',tabSearch,false);  /* Show Data when pressed TAB on search input field */
 
 // Copy input value
 
@@ -20,9 +21,10 @@ function searchArtist(){
 
 // Get data from database
 function getData(){
+    container.innerHTML =''; /* Remove elements from previous search */
     const data = searchArtist(); 
     const method = 'GET';
-    const url = `https://itunes.apple.com/search?term=${data}&entity=album`;  /* Content request */
+    const url = `https://itunes.apple.com/search?term=${data}&entity=album&attribute=artistTerm`;  /* Content request */
     const xhr = new XMLHttpRequest();
 
     xhr.open(method,url,true);/* Open AJAX request */
@@ -30,12 +32,14 @@ function getData(){
         if(this.status == 200 && this.readyState == 4){
             const dataReceived = parseData(this); /* Parse this.responseText */
             const outputData = dataReceived.results; 
-            if (outputData.length > 0){ /* If there are any results display them on page */
+            console.log(outputData);
+            if (outputData.length > 0 ){ /* If there are any results display them on page */
               loadData(outputData);
             }
         }
     }
     xhr.send();
+    artistQuery.value = '';/* Reset input field */
 }
 
 // Helper function to parse data from server
@@ -46,7 +50,7 @@ function parseData(data){
 }
 
 // Show data on website
-/* Create document fragment, fill with correct inormation retrieved from the database and append each result to div with 'container' class. */
+/* Create document fragment, fill it with correct information retrieved from the database and append each result to div with 'container' class. */
 
 function loadData(output){
     for ( let i = 0; i < output.length; i++){
@@ -62,7 +66,7 @@ function loadData(output){
                     <div class="album__list__details--title">${output[i].collectionName}</div>
                     <div class="album__list__details--offer">
                         <div class="album__list__details--price">
-                            <span>Price:</span>${output[i].collectionPrice} ${output[i].currency};
+                            <span>Price:</span>${output[i].collectionPrice || 'to be announced'} ${output[i].currency}
                         </div>
                         <a href="${output[i].collectionViewUrl}" target="_blank" class="album__list__album--shop">
                             <span>
@@ -75,5 +79,13 @@ function loadData(output){
         </section>`);
        container.appendChild(frag);
     }
-   
+
+}
+
+//  Show data when user presses TAB key.
+function tabSearch(e){
+    e.preventDefault();
+    if (e.target.tagName == 'FORM'){
+        searchBtn.click();
+    }
 }
