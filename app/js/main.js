@@ -4,12 +4,23 @@ const searchBtn = document.body.querySelector('.search__bar__form--button');
 const artistQuery = document.body.querySelector('.search__bar__form--input');
 const container = document.body.querySelector('.container');
 const form = document.body.querySelector('#search_form');
+const error = document.body.querySelector('.error_message'); 
+const parent = document.body.querySelector('.search__bar');
+const wrapper = document.body.querySelector('.search__bar__wrapper');
+const header = document.body.querySelector('.search__bar__wrapper--header');
+const formContainer = document.querySelector('.search__bar__form--container');
+const formIcon = document.querySelector('.search__bar__form--icon'); 
+const artist = document.querySelectorAll('.album__list__details--artist');
+const title = document.querySelectorAll('.album__list__details--title');
+
+
 
 
 // Event Listeners
 searchBtn.addEventListener('click',getData,false); /* Show Data */
 form.addEventListener('submit',tabSearch,false);  /* Show Data when pressed TAB on search input field */
-
+artistQuery.addEventListener('keydown',hideError,false);
+window.addEventListener('scroll',fixedSearchBar,false);
 // Copy input value
 
 function searchArtist(){
@@ -35,6 +46,8 @@ function getData(){
             console.log(outputData);
             if (outputData.length > 0 ){ /* If there are any results display them on page */
               loadData(outputData);
+            }else{
+                error.style.display = 'block';
             }
         }
     }
@@ -53,13 +66,15 @@ function parseData(data){
 /* Create document fragment, fill it with correct information retrieved from the database and append each result to div with 'container' class. */
 
 function loadData(output){
+
     for ( let i = 0; i < output.length; i++){
+    
         let frag = document.createRange().createContextualFragment(`  
         <section class="album__list">
             <div class="album__list__album--item">
                 <div class="album__list__album--thumbnail">
-                    <img src="${output[i].artworkUrl100}"
-                        alt="Album Cover">
+                 <img src="${output[i].artworkUrl100.replace(/100/g,'400')}"
+                    alt="Album Cover">
                 </div>
                 <div class="album__list__album__details">
                     <div class="album__list__details--artist">${output[i].artistName}</div>
@@ -78,14 +93,92 @@ function loadData(output){
             </div>
         </section>`);
        container.appendChild(frag);
+
+    }
+    const artist = Array.from(document.querySelectorAll('.album__list__details--artist'));
+    const title = Array.from(document.querySelectorAll('.album__list__details--title'));
+    
+    
+// media query event handler
+
+if (matchMedia) {
+  const mq = window.matchMedia("(max-width: 575.98px)");
+  mq.addListener(WidthChange);
+  WidthChange(mq);
+}
+
+
+// media query change
+    function WidthChange(mq) {
+        if (mq.matches) {
+        shave('.album__list__details--artist',100); /* Truncate strings in artist name and title in smallest resolution */
+        shave('.album__list__details--title',50);
+    } else{
+        shave('.album__list__details--artist',500);
+        shave('.album__list__details--title',500);
+    }
     }
 
 }
+ 
 
-//  Show data when user presses TAB key.
+
+//  Show data when user presses ENTER key.
 function tabSearch(e){
     e.preventDefault();
     if (e.target.tagName == 'FORM'){
         searchBtn.click();
     }
 }
+
+function hideError(){
+    if(error.style.display = 'block'){
+        error.style.display = 'none';
+    }
+}
+
+function fixedSearchBar(){
+    const distance = calculateScrollHeight();
+    if( distance > 10){
+    //     console.log('10%scroll')
+
+        parent.className = 'search__bar--fixed';
+        wrapper.className= 'search__bar__wrapper--fixed';
+        header.className= 'search__bar__wrapper--header--fixed';
+        form.className= 'search__bar__form--fixed';
+        formContainer.className='search__bar__form--container--fixed';
+        formIcon.className= 'search__bar__form--icon--fixed';
+        artistQuery.className='search__bar__form--input--fixed';
+        searchBtn.className='search__bar__form--button--fixed';
+        } else if(distance <= 10){
+        parent.className = 'search__bar';
+        wrapper.className= 'search__bar__wrapper';
+        header.className= 'search__bar__wrapper--header';
+        form.className= 'search__bar__form';
+        formContainer.className='search__bar__form--container';
+        formIcon.className= 'search__bar__form--icon';
+        artistQuery.className='search__bar__form--input';
+        searchBtn.className='search__bar__form--button';
+        }
+        
+    }
+
+// Function to calculate how much percentage of the page has been scrolled down by the user
+
+function calculateScrollHeight() {
+    const windowHeight = window.innerHeight; /* Get the height of the browser window */
+    const scrollTop = window.pageYOffset; /* How much user scrolled page vertically */
+    const docHeight = getDocumentHeight(); /* Document height */
+    const heightDiff = docHeight - windowHeight;/* Difference between document height and browser height */
+    const percentageScrolled = Math.floor(scrollTop/heightDiff * 100); /* Percentage of page scrolled by the user */
+    return percentageScrolled;
+}
+
+function getDocumentHeight(){
+    const doc = document;
+    return Math.max(doc.body.scrollHeight,
+                    doc.body.offsetHeight,
+                    doc.body.clientHeight);
+}
+
+
