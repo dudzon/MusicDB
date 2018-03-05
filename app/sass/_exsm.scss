@@ -1,5 +1,6 @@
-// Extra small devices (portrait phones, less than 576px)
-@media (min-width:367px) and(max-width: 575.98px) {
+// // Extra small devices (portrait phones, less than 576px)
+@media (max-width: 366.98px) {
+    
     html {
         font-size: $fontSizeXs;
     }
@@ -97,7 +98,7 @@
     }
     
     .search__bar--fixed .search__bar__wrapper--fixed .search__bar__form--button--fixed{
-        width:20%;
-        margin:1.2rem 0;
+        margin-top:2.2rem; ;
     }
+
 }

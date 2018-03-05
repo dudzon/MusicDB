@@ -40,7 +40,7 @@
         @include container;
         .album__list {
             @include album__list;
-            width: 45%;
+            width: 40%;
             &.album__list:nth-child(1),
             &.album__list:nth-child(2) {
                 margin-top: 3rem;
@@ -94,4 +94,13 @@
             }
         }
     }
+
+    .search__bar--fixed .search__bar__wrapper--fixed .search__bar__form--button--fixed{
+        width:15%;
+    }
+    .search__bar--fixed .search__bar__wrapper--fixed .search__bar__form--fixed .search__bar__form--container--fixed .search__bar__form--icon--fixed{
+        padding-left:1rem;
+    }
+
 }
+
