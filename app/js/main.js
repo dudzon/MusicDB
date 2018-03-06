@@ -222,7 +222,7 @@ function fixedSearchBar() {
             if (lq.matches) {
                 document.body.querySelector('.search__bar__wrapper--header--fixed').style.marginTop = '1rem';
                 document.body.querySelector('.search__bar__form--fixed').style.marginTop = '0';
-                document.body.querySelector('.search__bar__form--button--fixed').style.marginTop = '0.6rem';
+                document.body.querySelector('.search__bar__form--button--fixed').style.marginTop = '.6rem';
             }
         }
 
