@@ -1,6 +1,6 @@
 # MusicDB
 
-###AJAX Request to iTunes Search API <br>
+<h2>AJAX Request to iTunes Search API</h2> <br>
 Search your favourite artist in iTunes Database.<br>
 
 Happy searching!
