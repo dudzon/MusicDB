@@ -185,6 +185,7 @@ function tabSearch(e) {
     if (e.target.tagName == 'FORM') {
         searchBtn.click();
     }
+    artistQuery.blur();
 }
 
 function hideError() {
