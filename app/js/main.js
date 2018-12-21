@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded',function(){
+
 // Global Variables
 
 const searchBtn = document.body.querySelector('.search__bar__form--button');
@@ -62,14 +64,14 @@ function parseData(data) {
 }
 
 // Show data on website
-/* Create document fragment, fill it with correct information retrieved from the database and append each result to div with 'container' class. 
+/* Create document fragment, fill it with correct information retrieved from the database and append each result to div with 'container' class.
 Truncate title or artist strings on smallest screens */
 
 function loadData(output) {
 
     for (let i = 0; i < output.length; i++) {
 
-        let frag = document.createRange().createContextualFragment(`  
+        let frag = document.createRange().createContextualFragment(`
         <section class="album__list">
             <div class="album__list__album--item">
                 <div class="album__list__album--thumbnail">
@@ -168,7 +170,7 @@ function loadData(output) {
         }
 
     }
-    // Helper function to determinate element clientHeight 
+    // Helper function to determinate element clientHeight
     function getElemHeight(el){
         return el.clientHeight;
     }
@@ -265,5 +267,12 @@ function getDocumentHeight() {
         doc.body.offsetHeight,
         doc.body.clientHeight);
 }
+
+
+
+
+
+})
+
 
 
