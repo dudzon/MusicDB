@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',function(){
+window.onload = function(){
 
 // Global Variables
 
